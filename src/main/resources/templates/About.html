@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Alpine Store : About</title>
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" href="" th:href="@{/css/Navigation.css}" />
+	<link rel="stylesheet" href="" th:href="@{/css/About.css}" />
+</head>
+<body>
+	<nav th:replace="~{Navigation::navbar()}">	
+	</nav>
+	
+	<div class="information">
+		
+		<h1>Alpin Store</h1>
+		<h4>Fordońska 4A, Bydgoszcz,</h4>
+		<h4>Near Arkada Business Park</h4>
+		<h4>Kujawsko-Pomorskie, Poland.</h4>
+		
+	</div>
+	<div class="icons">
+		<h3><i class="fa-brands fa-square-instagram" style="color: black;"></i> :@Alpin_Store</h3>
+		<h3><i class="fa-solid fa-phone" style="color: black;"></i> : +46 666 302 275</h3>
+		<h3> <i class="fa-solid fa-envelope" style="color: black;"></i>  : Alpin.Store@onet.pl</h3>
+		
+	</div>
+</body>
+</html>

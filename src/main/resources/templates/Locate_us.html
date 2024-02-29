@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Alpine Store : Location</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" href="" th:href="@{/css/Navigation.css}" />
+	<link rel="stylesheet" href="" th:href="@{/css/Locate_us.css}" />
+</head>
+
+<body>
+	<nav th:replace="~{Navigation::navbar()}"></nav>
+	<center>
+		<h1 style="color: green; ">Our Location</h1>
+		<small style="color: red;font-weight: bold;">Internet required..</small>
+	</center>
+	<div class="location">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d153224.43584335546!2d17.873377372649006!3d53.1257794014718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47031386764ebd6f%3A0xe49ee48c4b65f30e!2sBydgoszcz!5e0!3m2!1spl!2spl!4v1708704207312!5m2!1spl!2spl"
+		 width="1200" 
+		height="600" style="border:1px;"
+		 allowfullscreen="true" 
+		 loading="lazy"
+		referrerpolicy="no-referrer-when-downgrade"></iframe>
+	</div>
+</body>
+
+</html>
