@@ -21,7 +21,6 @@ public class User {
 	private Long userNumber;
 
 	private String password;
-	// Getters and setters
 
 
 
@@ -75,7 +74,6 @@ public class User {
 		this.userNumber = userNumber;
 	}
 
-	// Dodaj dodatkowe metody
 
 	public String getEmail() {
 		return userEmail;
@@ -85,7 +83,6 @@ public class User {
 		return userName;
 	}
 
-	// toString method
 
 	@Override
 	public String toString() {

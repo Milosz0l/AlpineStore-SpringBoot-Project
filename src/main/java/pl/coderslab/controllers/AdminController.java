@@ -30,7 +30,7 @@ public class AdminController
     private String email;
     private User user;
     
-    //validating login
+
     
     
 	@PostMapping("/adminLogin")
@@ -61,20 +61,20 @@ public class AdminController
 		model.addAttribute("products", products);
 		return "Admin_Page";
 	}
-	//Invoking addAdmin Page
+
 	@GetMapping("/addAdmin")
 	public String addAdminPage()
 	{
 		return "Add_Admin";
 	}
-	//Handling AddAdmin
+
 	@PostMapping("addingAdmin")
 	public String addAdmin(@ModelAttribute Admin admin)
 	{
 		this.adminService.addAdmin(admin);
 		return "redirect:/services";
 	}
-	//invoking updateAdmin Page
+
 	@GetMapping("/updateAdmin/{adminId}")
 	public String update(@PathVariable("adminId") int id,Model model)
 	{
@@ -82,34 +82,33 @@ public class AdminController
 		model.addAttribute("admin", admin);
 		return "Update_Admin";
 	}
-	//Handling Update Page
+
 	@GetMapping("/updatingAdmin/{id}")
 	public String updateAdmin(@ModelAttribute Admin admin,@PathVariable("id") int id)
 	{
 		this.adminService.updateAdmin(admin, id);
 		return "redirect:/services";
 	}
-	//IHandling delete operation
 	@GetMapping("/deleteAdmin/{id}")
 	public String deleteAdmin(@PathVariable("id") int id)
 	{
 		this.adminService.delete(id);
 		return "redirect:/services";
 	}
-	//invoking user page
+
 	@GetMapping("/addUser")
 	public String addUser()
 	{
 		return "Add_User";
 	}
-	//adding user
+
 	@PostMapping("addingUser")
 	public String adduser(@ModelAttribute User user)
 	{
 		this.userService.addUser(user);
 		return "redirect:/services";
 	}
-	//Invoking UpdateUser Page
+
 	@GetMapping("/updateUser/{userId}")
 	public String updateUserPage(@PathVariable("userId") int id,Model model)
 	{
@@ -117,7 +116,7 @@ public class AdminController
 		model.addAttribute("user", user);
 		return "Update_User";
 	}
-	//Handling Update Page
+
 	@GetMapping("/updatingUser/{id}")
 	public String updateUser(@ModelAttribute User user,@PathVariable("id") int id)
 	{
@@ -131,7 +130,6 @@ public class AdminController
 		return "redirect:/services";
 	}
 	
-	//handling Product page
 	@GetMapping("/addProduct")
 	public String addProduct()
 	{

@@ -30,14 +30,12 @@ public class UserService
 //		return "check emial";
 //	}
 
-	//Get All Users
 	public List<User> getAllUser()
 	{
 		List<User> users = (List<User>) this.userRepository.findAll();
 		return users;
 	}
 
-	//Get Single User
 	public User getUser(int id)
 	{
 		Optional<User> optional = this.userRepository.findById(id);
@@ -45,20 +43,17 @@ public class UserService
 		return user;
 	}
 
-	//Update
 	public void updateUser(User user,int id)
 	{
 		user.setUserId(id);
 		this.userRepository.save(user);
 	}
 
-	//delete single User
 	public void deleteUser(int id)
 	{
 		this.userRepository.deleteById(id);
 	}
 
-	//Add User
 	public void addUser(User user)
 	{
 		this.userRepository.save(user);

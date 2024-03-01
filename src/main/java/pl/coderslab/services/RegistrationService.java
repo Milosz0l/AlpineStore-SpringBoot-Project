@@ -16,17 +16,11 @@ public class RegistrationService {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    private EmailService emailService; // Dodaj zależność
+    private EmailService emailService;
 
     public void registerUser(User user) {
-        // Szyfrowanie hasła użytkownika przed zapisaniem go do bazy danych
         user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
-
-        // Tutaj można dodać logikę walidacji lub inne operacje przed zapisaniem użytkownika
-
-        userRepository.save(user); // Zapisanie użytkownika do bazy danych
-
-        // Wyślij wiadomość e-mail powitalną
+        userRepository.save(user);
         emailService.sendWelcomeEmail(user.getUserEmail());
     }
 }

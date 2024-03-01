@@ -40,10 +40,9 @@ public class EmailService {
             System.out.println(response.getBody());
             System.out.println(response.getHeaders());
         } catch (IOException ex) {
-            // Obsługa błędu IOException, np. logowanie wyjątku
+
             ex.printStackTrace();
-            // Możesz również rzucać wyjątek dalej, jeśli chcesz, aby klient otrzymał informację o błędzie
-            // throw new RuntimeException("Failed to send email", ex);
+
         }
     }
 

@@ -24,7 +24,6 @@ public class RegistrationController {
     @PostMapping("/userRegister")
     public String registerUser(@ModelAttribute("user") User user) {
         registrationService.registerUser(user);
-        // Po udanej rejestracji przekieruj użytkownika do strony głównej
         return "redirect:/home";
     }
 

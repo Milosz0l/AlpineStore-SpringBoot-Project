@@ -16,7 +16,6 @@ public class AdminService
 	private AdminRepository adminRepository;
 
 
-	//Get all Admins
 	public List<Admin>getAll()
 	{
 		List<Admin> admins =(List<Admin>) this. adminRepository.findAll();
@@ -24,7 +23,6 @@ public class AdminService
 
 	}
 
-	//Get Single Admin
 	public Admin getAdmin(int id)
 	{
 		Optional<Admin> optional = this.adminRepository.findById(id);
@@ -33,7 +31,6 @@ public class AdminService
 
 	}
 
-	//	//Update Admin
 	public void updateAdmin(Admin admin,int id)
 	{
 		for(Admin ad:getAll())
@@ -44,12 +41,10 @@ public class AdminService
 			}
 		}
 	}
-	//delete Admin
 	public void delete(int id)
 	{
 		this.adminRepository.deleteById(id);
 	}
-	//add Admin
 	public void addAdmin(Admin admin)
 	{
 		this.adminRepository.save(admin);
