@@ -1,49 +1,45 @@
 package pl.coderslab.services;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
+import org.springframework.stereotype.Service;
 import pl.coderslab.entities.Product;
 import pl.coderslab.repositories.ProductRepository;
 
-@Component
+import java.util.List;
+import java.util.Optional;
+
+@Service
 public class ProductService {
 
     private final ProductRepository productRepository;
 
-
+    @Autowired
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
-    public void addProduct(Product p) {
-        this.productRepository.save(p);
+    public void addProduct(Product product) {
+        productRepository.save(product);
     }
 
-    public List<Product> getAllProducts() {
-        List<Product> products = (List<Product>) this.productRepository.findAll();
-        return products;
+    public Optional<Product> getProductById(int id) {
+        return productRepository.findById(id);
     }
 
-    public Product getProduct(int id) {
-        Optional<Product> optional = this.productRepository.findById(id);
-        Product product = optional.get();
-        return product;
-    }
-
-    public void updateproduct(Product p, int id) {
-        p.setPid(id);
-        Optional<Product> optional = this.productRepository.findById(id);
-        Product prod = optional.get();
-        if (prod.getPid() == id) {
-            this.productRepository.save(p);
-        }
+    public void updateProduct(int id, Product updatedProduct) {
+        updatedProduct.setPid(id);
+        productRepository.save(updatedProduct);
     }
 
     public void deleteProduct(int id) {
-        this.productRepository.deleteById(id);
+        productRepository.deleteById(id);
+    }
+
+    public Product getProductByPname(String name) {
+        return productRepository.findByPname(name);
+    }
+
+    public List<Product> getAllProducts() {
+        return (List<Product>) productRepository.findAll();
     }
 }
