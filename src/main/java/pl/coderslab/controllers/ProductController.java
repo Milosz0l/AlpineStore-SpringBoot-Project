@@ -16,7 +16,14 @@
 //{
 //
 //	@Autowired
-//	private ProductService productService;
+//	private final ProductService productService;
+
+
+//public ProductController(ProductService) {
+//    this.productService = productService
+//
+//
+//}
 //
 //	//	AddProduct
 //	@PostMapping("/addingProduct")

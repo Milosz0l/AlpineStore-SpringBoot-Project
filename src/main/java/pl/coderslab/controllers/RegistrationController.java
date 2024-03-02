@@ -12,11 +12,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RegistrationController {
 
-    @Autowired
-    private RegistrationService registrationService;
+    private final RegistrationService registrationService;
+
+
+    public RegistrationController(RegistrationService registrationService) {
+        this.registrationService = registrationService;
+    }
+
 
     @GetMapping("/register")
-    public String registerForm(Model model){
+    public String registerForm(Model model) {
         model.addAttribute("user", new User());
         return "register";
     }

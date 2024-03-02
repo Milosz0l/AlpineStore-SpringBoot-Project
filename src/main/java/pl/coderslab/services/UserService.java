@@ -10,10 +10,13 @@ import pl.coderslab.entities.User;
 import pl.coderslab.repositories.UserRepository;
 
 @Component
-public class UserService
-{
-	@Autowired
-	private UserRepository userRepository;
+public class UserService {
+    private final UserRepository userRepository;
+
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
 ////	public static String setPassword(String email, String newPassword) {
 //		User user = userRepository.findByUserEmail(email)
@@ -30,34 +33,29 @@ public class UserService
 //		return "check emial";
 //	}
 
-	public List<User> getAllUser()
-	{
-		List<User> users = (List<User>) this.userRepository.findAll();
-		return users;
-	}
+    public List<User> getAllUser() {
+        List<User> users = (List<User>) this.userRepository.findAll();
+        return users;
+    }
 
-	public User getUser(int id)
-	{
-		Optional<User> optional = this.userRepository.findById(id);
-		User user = optional.get();
-		return user;
-	}
+    public User getUser(int id) {
+        Optional<User> optional = this.userRepository.findById(id);
+        User user = optional.get();
+        return user;
+    }
 
-	public void updateUser(User user,int id)
-	{
-		user.setUserId(id);
-		this.userRepository.save(user);
-	}
+    public void updateUser(User user, int id) {
+        user.setUserId(id);
+        this.userRepository.save(user);
+    }
 
-	public void deleteUser(int id)
-	{
-		this.userRepository.deleteById(id);
-	}
+    public void deleteUser(int id) {
+        this.userRepository.deleteById(id);
+    }
 
-	public void addUser(User user)
-	{
-		this.userRepository.save(user);
-	}
+    public void addUser(User user) {
+        this.userRepository.save(user);
+    }
 
 
 }

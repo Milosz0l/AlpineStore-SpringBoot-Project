@@ -6,6 +6,7 @@ import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +15,18 @@ import java.io.IOException;
 @Service
 public class EmailService {
 
-    @Value("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")
-    private String sendgridApiKey;
+    private final String sendgridApiKey;
+
+
+    public EmailService(@Value("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") String sendgridApiKey) {
+        this.sendgridApiKey = sendgridApiKey;
+    }
 
     public void sendWelcomeEmail(String userEmail) {
         sendEmail(userEmail, "Welcome to Alpine Store!!", "<html><body><h1>Welcome to Alpine Store!</h1><p>We're glad to have you on board.</p></body></html>");
     }
-//    public static void sendSetPassword(String userEmail){
+
+    //    public static void sendSetPassword(String userEmail){
 //        sendEmail(userEmail,"Reset yor password","<html><body><h1>Welcome to Alpine Store!</h1><p>We're glad to have you on board.</p></body></html>");
 //    }
     public void sendEmail(String userEmail, String subject, String htmlContent) {

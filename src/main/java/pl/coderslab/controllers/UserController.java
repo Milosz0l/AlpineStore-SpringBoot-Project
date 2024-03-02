@@ -11,23 +11,24 @@ import pl.coderslab.entities.Product;
 import pl.coderslab.repositories.ProductRepository;
 
 @Controller
-public class UserController 
-{
-	@Autowired
-	private ProductRepository productRepository;
-	
-	@GetMapping("/userlogin")
-	public String allProduct(Model model)
-	{
-		List<Product>product=(List<Product>) productRepository.findAll();
-		model.addAttribute("products", product);
-		return "All_Product";
-	}
- @GetMapping("/selecting")
- public String selectedProduct()
- {
-	 return "Product_Selected";
- }
+public class UserController {
+    private final ProductRepository productRepository;
+
+    public UserController(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
+    @GetMapping("/userlogin")
+    public String allProduct(Model model) {
+        List<Product> product = (List<Product>) productRepository.findAll();
+        model.addAttribute("products", product);
+        return "All_Product";
+    }
+
+    @GetMapping("/selecting")
+    public String selectedProduct() {
+        return "Product_Selected";
+    }
 
 }
 

@@ -6,39 +6,33 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @Controller
-public class HomeController 
-{
-	
-	@GetMapping("/home")
-	public String home()
-	{
-		return "Home";
-	}
+public class HomeController {
 
-	@GetMapping("/products")
-	public String products( Model model)
-	{ 
-		
-		return "Products";
-	}
+    @GetMapping("/home")
+    public String home() {
+        return "Home";
+    }
 
-	@GetMapping("/location")
-	public String location()
-	{
-		return "Locate_us";
-	}
+    @GetMapping("/products")
+    public String products(Model model) {
 
-	@GetMapping("/about")
-	public String about()
-	{
-		return "About";
-	}
+        return "Products";
+    }
 
-	@GetMapping("/login")
-	public String login(Model model)
-	{
-		return "Login";
-	}
+    @GetMapping("/location")
+    public String location() {
+        return "Locate_us";
+    }
+
+    @GetMapping("/about")
+    public String about() {
+        return "About";
+    }
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "Login";
+    }
 
 
 }
