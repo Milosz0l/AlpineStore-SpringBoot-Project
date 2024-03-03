@@ -1,5 +1,7 @@
 package pl.coderslab.services;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.coderslab.entities.User;
 import pl.coderslab.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +32,6 @@ public class RegistrationService {
         userRepository.save(user);
         emailService.sendWelcomeEmail(user.getUserEmail());
     }
+
+
 }
