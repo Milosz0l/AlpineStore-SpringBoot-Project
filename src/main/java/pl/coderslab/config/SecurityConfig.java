@@ -2,6 +2,7 @@ package pl.coderslab.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,15 +10,22 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import pl.coderslab.services.AdminService;
+import pl.coderslab.services.ProductService;
+import pl.coderslab.services.UserService;
 
 import javax.sql.DataSource;
 
-@Configuration
+@ComponentScan
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private DataSource dataSource;
+
+    private final DataSource dataSource;
+
+    public SecurityConfig(DataSource dataSource) {
+      this.dataSource = dataSource;
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -25,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .usersByUsernameQuery("SELECT user_id, user_email, user_password, enabled FROM users WHERE user_email=?")
                 .authoritiesByUsernameQuery("SELECT user_email, role FROM user_roles WHERE user_email=?")
-                .passwordEncoder(passwordEncoder());
+                .passwordEncoder(bCryptPasswordEncoder());
     }
 
     @Override
@@ -46,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
